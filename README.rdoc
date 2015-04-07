@@ -1,28 +1,7 @@
-== README
+This is Bubblz101 :
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Bubblz101 is a little Rails4 application meant to upload video from your computer to your youtube account.
 
-Things you may want to cover:
+- It can also add videos from youtube to your little media database.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- If you were waiting something to save the environement and produce free energy wait a little bit we are working on it, updates are comming soon .
