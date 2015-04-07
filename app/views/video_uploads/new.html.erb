@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'application' %>
+<div class="container">
+  <h2>Upload a video from your computer to your Youtube account</h2>
+  <% if current_user %>
+      <%= form_for @video_upload do |f| %>
+          <%= render 'shared/errors', object: @video_upload %>
+
+          <div class="form-group">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: 'form-control', required: true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control', cols: 3 %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :file %>
+            <%= f.file_field :file, class: 'form-control', required: true %>
+          </div>
+
+          <%= f.submit 'Upload', class: 'btn btn-primary', id: "button-send" %>
+          <%= image_tag 'Akuma.gif', class: 'hidden-dude', alt: 'Uploading...', id: "Akuma" %>
+      <% end %>
+  <% else %>
+      <p>Please <%= link_to 'sign in', '/auth/google_oauth2' %>.</p>
+  <% end %>
+
+  <script>
+      $("#button-send").click(function(){
+        $("#button-send").hide();
+          $("#Akuma").show();
+      });
+  </script>
+
+</div>

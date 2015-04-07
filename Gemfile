@@ -1,23 +1,28 @@
 source 'https://rubygems.org'
 
+gem 'active_type', '0.3.1'
+
+gem 'omniauth-google-oauth2'
+
+gem 'yt', '~> 0.13.7'
+
+gem 'bootstrap-sass', '~> 3.3.0.1'
+
+gem 'autoprefixer-rails'
+
+gem 'rails-observers'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# La gem pour implementer Bootstrap et avoir une petite interface sympa rapidement ^^
-gem 'bootstrap-sass'
-# Cette gem est utiliser pour permettre au dev d'avoir plusieur strategies d'authentification (facebook twitter ...)
-gem 'omniauth-google-oauth2'
-# La gem pour implementer le Sqlite :3
+# Use sqlite3 as the database for Active Record
 gem 'sqlite3'
-# Cette gem me permet d'utiliser le css en tant que Scss ce qui me permet aussi d'import Bootstrap
+# Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-# Uglifier le compresseur pour javascript qui maintenant que je le sais cache le code ^^
+# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Coffee script me permet d'integrer un peu de JQuery dans mon code :)
+# Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# youtube_it est une surcouche à l'api google pour rails qui facilite le contact avec Youtube
-gem 'youtube_it', github: 'bodrovis/youtube_it'
-
-#------------------------- Ici sont les gems requises par la construction du projet -----------------
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

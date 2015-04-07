@@ -13,24 +13,17 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap/theme";
 
-@import 'bootstrap';
-@import 'bootstrap/theme';
-
-.preloader{
-  display: none;
-
+.nav > li > span {
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #9d9d9d;
 }
 
-#videos-list {
-  margin: 0;
-  padding: 0;
-  li {
-    padding: 0;
-    list-style-type: none;
-    word-wrap: break-word;
-    .caption {
-      text-align: center;
-    }
-  }
+.hidden-dude{
+  display: none;
 }

@@ -3,8 +3,7 @@ Rails.application.configure do
 
   # Code is not reloaded between requests.
   config.cache_classes = true
-  ENV['CLIENT_ID'] = "602183298260-bnd4sigijeh011o80ghc5q15ovu9g73i.apps.googleusercontent.com"
-  ENV['CLIENT_SECRET'] = "gmFnshYkRWrlyPYeTGV4Tb7n"
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.

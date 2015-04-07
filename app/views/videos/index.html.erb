@@ -1,26 +1,30 @@
-<div class="jumbotron">
-  <h1>YouTube Uploader</h1>
-  <p>Upload your video to YouTube and share it with the world!</p>
-  <p><%= link_to 'Upload video now!', new_video_path, class: 'btn btn-primary btn-lg' %></p>
-</div>
 
-<div class="page-header">
-  <h1>Videos</h1>
-</div>
-
-<ul class="row" id="videos-list">
-  <% @videos.each do |video| %>
-      <li class="col-sm-3">
-        <div class="thumbnail">
-          <%= link_to image_tag("https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
-                                class: 'img-rounded'),
-                      "https://www.youtube.com/watch?v=#{video.uid}", target: '_blank' %>
-
-          <div class="caption">
-            <h4><%= video.title %></h4>
-            <p><%= truncate video.description, length: 100 %></p>
+<% if @videos.any? %>
+    <div class="container">
+      <h1>Latest Uploaded and Added Videos</h1>
+      <div id="player-wrapper"></div>
+      <% @videos.in_groups_of(3) do |group| %>
+          <div class="row">
+            <% group.each do |video| %>
+                <% if video %>
+                    <div class="col-md-4">
+                      <div class="yt_video thumbnail">
+                        <%= link_to image_tag("https://img.youtube.com/vi/#{video.uid}/mqdefault.jpg", alt: video.title,
+                                              class: 'img-rounded'),
+                                    "https://www.youtube.com/watch?v=#{video.uid}", target: '_blank' %>
+                        <div class="caption">
+                          <h5><%= video.title %></h5>
+                          <p>Published at <%= video.published_at.strftime('%-d %B %Y %H:%M:%S') %></p>
+                          <p>
+                            <span class="glyphicon glyphicon glyphicon-thumbs-up"></span> <%= video.likes %>
+                            <span class="glyphicon glyphicon glyphicon-thumbs-down"></span> <%= video.dislikes %>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+            <% end %>
           </div>
-        </div>
-      </li>
-  <% end %>
-</ul>
+      <% end %>
+    </div>
+<% end %>

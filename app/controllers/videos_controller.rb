@@ -1,40 +1,25 @@
 class VideosController < ApplicationController
-
   def index
-    @videos = Video.all
+    @videos = Video.order('created_at DESC')
   end
 
   def new
-    @pre_upload_info = {}
+    @video = Video.new
   end
 
-  def get_upload_token
-
-    temp_params = { title: params[:title], description: params[:description], category: 'Education',
-                    keywords: [] }
-
-    if current_user
-      youtube = YouTubeIt::OAuth2Client.new(client_access_token: current_user.token,
-                                            dev_key: ENV['GOOGLE_DEV_KEY'])
-
-      upload_info = youtube.upload_token(temp_params, "http://127.0.0.1:3000/videos/get_video_uid")
-
-      render json: {token: upload_info[:token], url: upload_info[:url]}
+  def create
+    @video = Video.new(video_params)
+    if @video.save
+      flash[:success] = 'Your Video has been added!'
+      redirect_to root_url
     else
-      render json: {error_type: 'Not authorized.', status: :unprocessable_entity}
+      render :new
     end
   end
 
-  def get_video_uid
-    video_uid = params[:id]
-    v = current_user.videos.build(uid: video_uid)
-    youtube = YouTubeIt::OAuth2Client.new(dev_key: ENV['GOOGLE_DEV_KEY'])
-    yt_video = youtube.video_by(video_uid)
-    v.title = yt_video.title
-    v.description = yt_video.description
-    v.save
-    flash[:success] = 'Thanks for sharing your video!'
-    redirect_to root_url
-  end
+  private
 
+  def video_params
+    params.require(:video).permit(:link)
   end
+end

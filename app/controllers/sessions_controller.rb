@@ -1,17 +1,14 @@
 class SessionsController < ApplicationController
   def create
-    auth = request.env['omniauth.auth']
-    user = User.find_or_initialize_by(uid: auth['uid'])
-    user.token = auth['credentials']['token']
-    user.name = auth['info']['name']
-    user.save
+    user = User.from_omniauth(request.env['omniauth.auth'])
     session[:user_id] = user.id
-    flash[:success] = "Welcome, #{user.name}!"
-    redirect_to new_video_path
+    flash[:success] = "Welcome to Bubblz101, #{user.name}"
+    redirect_to root_url
   end
 
-  def fail
-    render text: "Sorry, but the following error has occured: #{params[:message]}. Please try again or contact
-administrator."
+  def destroy
+    session[:user_id] = nil
+    flash[:success] = "Thank you for using Bubblz101, see you again !"
+    redirect_to root_url
   end
 end

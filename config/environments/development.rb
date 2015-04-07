@@ -35,8 +35,7 @@ Rails.application.configure do
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
-  ENV['CLIENT_ID'] = "602183298260-bnd4sigijeh011o80ghc5q15ovu9g73i.apps.googleusercontent.com"
-  ENV['CLIENT_SECRET'] = "gmFnshYkRWrlyPYeTGV4Tb7n"
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

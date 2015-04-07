@@ -1,19 +1,16 @@
 Rails.application.routes.draw do
 
-  #la route root pour que le user soit directement rediriger sur le controller videos
+  get 'video_uploads/new'
 
+  get 'sessions/create'
 
+  get 'videos/index'
 
-  resources :videos, only: [:new, :index]
+  resources :videos, only: [:index, :new, :create]
   root to: 'videos#index'
 
-  post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
-  get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
+  get '/auth/:provider/callback', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy', as: :logout
 
-  get'/auth/failure', to: 'session#fail'
-  get'/auth/:provider/callback', to: 'sessions#create'
-  get'/auth/:provider/', to: 'sessions#create'
-  get'/auth/google_oauth2/callback', to: 'sessions#create'
-
-
+  resources :video_uploads, only: [:new, :create]
 end
